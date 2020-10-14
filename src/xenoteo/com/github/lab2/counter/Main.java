@@ -1,11 +1,14 @@
-package xenoteo.com.github.lab1;
+package xenoteo.com.github.lab2.counter;
+
+import xenoteo.com.github.lab1.Counter;
+import xenoteo.com.github.lab2.Semaphore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Multi-threaded data access concurrently without data protection.
- * Malfunctions of concurrent programs are shown.
+ * Multi-threaded data access concurrently with data protection.
+ * Properly operation program is shown.
  */
 public class Main {
 
@@ -15,7 +18,8 @@ public class Main {
 
         Counter counter = new Counter();   // starting with 0
         List<Thread> threads = new ArrayList<>();
-        IncrementingAndDecrementing counting = new IncrementingAndDecrementing(counter, operationsNumber);
+        IncrementingAndDecrementing counting =
+                new IncrementingAndDecrementing(counter, operationsNumber, new Semaphore());
 
         for (int i = 0; i < threadsNumber; i++){
             Thread thread = new Thread(counting);
