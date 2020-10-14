@@ -1,7 +1,7 @@
 package xenoteo.com.github.lab2.diningPhisosophers.correct;
 
-import xenoteo.com.github.lab2.CountingSemaphore;
-import xenoteo.com.github.lab2.Semaphore;
+import xenoteo.com.github.lab2.semaphores.CountingSemaphore;
+import xenoteo.com.github.lab2.semaphores.Semaphore;
 
 import java.util.ArrayList;
 import java.util.List;

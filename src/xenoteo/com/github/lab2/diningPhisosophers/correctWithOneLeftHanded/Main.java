@@ -1,6 +1,6 @@
 package xenoteo.com.github.lab2.diningPhisosophers.correctWithOneLeftHanded;
 
-import xenoteo.com.github.lab2.Semaphore;
+import xenoteo.com.github.lab2.semaphores.Semaphore;
 
 import java.util.ArrayList;
 import java.util.List;

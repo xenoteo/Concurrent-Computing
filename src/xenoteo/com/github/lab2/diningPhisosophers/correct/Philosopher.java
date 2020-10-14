@@ -1,7 +1,7 @@
 package xenoteo.com.github.lab2.diningPhisosophers.correct;
 
-import xenoteo.com.github.lab2.CountingSemaphore;
-import xenoteo.com.github.lab2.Semaphore;
+import xenoteo.com.github.lab2.semaphores.CountingSemaphore;
+import xenoteo.com.github.lab2.semaphores.Semaphore;
 
 /**
  * Implementing dining philosophers using the help of a valet,

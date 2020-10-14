@@ -1,7 +1,7 @@
 package xenoteo.com.github.lab2.counter;
 
 import xenoteo.com.github.lab1.Counter;
-import xenoteo.com.github.lab2.Semaphore;
+import xenoteo.com.github.lab2.semaphores.Semaphore;
 
 import java.util.ArrayList;
 import java.util.List;

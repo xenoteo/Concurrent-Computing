@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab2;
+package xenoteo.com.github.lab2.semaphores;
 
 /**
  * Simple binary semaphore implementation.
@@ -16,4 +16,3 @@ public class Semaphore {
         notify();
     }
 }
-

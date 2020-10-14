@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab2;
+package xenoteo.com.github.lab2.semaphores;
 
 /**
  * Simple implementation of a counting semaphore.

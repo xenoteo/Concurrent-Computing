@@ -1,6 +1,6 @@
 package xenoteo.com.github.lab2.diningPhisosophers.correctWithOneLeftHanded;
 
-import xenoteo.com.github.lab2.Semaphore;
+import xenoteo.com.github.lab2.semaphores.Semaphore;
 
 /**
  * Implementing dining philosophers where one of the philosophers is left-handed,
