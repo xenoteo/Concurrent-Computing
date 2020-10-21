@@ -3,6 +3,9 @@ package xenoteo.com.github.lab3;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Demonstrating of producer-consumer problem.
+ */
 public class Main {
     public static void main(String[] args) {
         int producerNumber = 2;

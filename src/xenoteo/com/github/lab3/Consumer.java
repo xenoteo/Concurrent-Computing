@@ -1,5 +1,8 @@
 package xenoteo.com.github.lab3;
 
+/**
+ * Simple consumer implementation.
+ */
 public class Consumer implements Runnable{
     private Factory factory;
     private int id;
@@ -12,7 +15,7 @@ public class Consumer implements Runnable{
     @Override
     public void run() {
         while(true) {
-            int val = factory.consume();
+            int val = factory.consume(id);
         }
     }
 }

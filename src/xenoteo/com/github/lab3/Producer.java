@@ -1,5 +1,8 @@
 package xenoteo.com.github.lab3;
 
+/**
+ * Producer producing a random number.
+ */
 public class Producer implements Runnable{
     private Factory factory;
     private int id;
@@ -13,7 +16,7 @@ public class Producer implements Runnable{
     public void run() {
         while(true) {
             int val = (int) (Math.random() * 100);
-            factory.produce(val);
+            factory.produce(val, id);
         }
     }
 }

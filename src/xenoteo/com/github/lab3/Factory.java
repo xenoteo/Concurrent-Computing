@@ -2,6 +2,9 @@ package xenoteo.com.github.lab3;
 
 import java.util.LinkedList;
 
+/**
+ * Factory, where producers produce and consumers consume.
+ */
 public class Factory {
     private int size;
     private LinkedList<Integer> stock;
@@ -11,28 +14,28 @@ public class Factory {
         stock = new LinkedList<>();
     }
 
-    public synchronized void produce(int val){
+    public synchronized void produce(int val, int id){
         try {
             while (isFull()){
                 wait();
-                System.out.println("Producer is waiting...");
+                System.out.printf("Producer %d is waiting...\n", id);
             }
             stock.add(val);
-            System.out.printf("produced value %d\n", val);
+            System.out.printf("Producer %d produced value %d\n", id, val);
             notify();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public synchronized int consume(){
+    public synchronized int consume(int id){
         try {
             while (isEmpty()){
                 wait();
-                System.out.println("Consumer is waiting...");
+                System.out.printf("Consumer %d is waiting...\n", id);
             }
             int val = stock.poll();
-            System.out.printf("consumed value %d\n", val);
+            System.out.printf("Consumer %d consumed value %d\n", id, val);
             notify();
             return val;
         } catch (InterruptedException e) {
