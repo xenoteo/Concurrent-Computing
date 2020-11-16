@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab5;
+package xenoteo.com.github.lab5.booleanVariables;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        int producerNumber = 1;
+        int producerNumber = 5;
         int consumerNumber = 10;
         int factorySize = 10;
         Factory factory = new Factory(factorySize);

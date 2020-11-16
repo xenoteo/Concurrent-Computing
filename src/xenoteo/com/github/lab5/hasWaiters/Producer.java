@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab5;
+package xenoteo.com.github.lab5.hasWaiters;
 
 import java.util.LinkedList;
 import java.util.List;

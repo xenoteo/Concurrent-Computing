@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab5;
+package xenoteo.com.github.lab5.booleanVariables;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -36,6 +36,12 @@ public class Factory {
 
     public void produce(List<Integer> data, int id){
         lock.lock();
+        System.out.printf("Producer %d is entering and is going to produce %d elements. " +
+                "There are %d elements in the stock.\n", id, data.size(), stock.size());
+        System.out.printf("[THREADS INFO] %d threads in firstProducer, %d threads in restProducer, " +
+                        "%d threads in firstConsumer, %d threads in restConsumer\n",
+                lock.getWaitQueueLength(firstProducer), lock.getWaitQueueLength(restProducers),
+                lock.getWaitQueueLength(firstConsumer), lock.getWaitQueueLength(restConsumers));
         try {
             while (firstProducerWaits) {
                 restProducers.await();
@@ -60,6 +66,12 @@ public class Factory {
 
     public List<Integer> consume(int size, int id){
         lock.lock();
+        System.out.printf("Consumer %d is entering and is going to consume %d elements. " +
+                "There are %d elements in the stock.\n", id, size, stock.size());
+        System.out.printf("[THREADS INFO] %d threads in firstProducer, %d threads in restProducer, " +
+                        "%d threads in firstConsumer, %d threads in restConsumer\n",
+                lock.getWaitQueueLength(firstProducer), lock.getWaitQueueLength(restProducers),
+                lock.getWaitQueueLength(firstConsumer), lock.getWaitQueueLength(restConsumers));
         try {
             while (firstConsumerWaits) {
                 restConsumers.await();
