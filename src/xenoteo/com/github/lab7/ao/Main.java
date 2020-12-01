@@ -10,8 +10,10 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) {
-        int consumerNumber = 1;
-        int producerNumber = 2;
+        final int MAX_THREADS_NUMBER = 50;
+
+        int consumerNumber = (int) (Math.random() * MAX_THREADS_NUMBER) + 1;
+        int producerNumber = (int) (Math.random() * MAX_THREADS_NUMBER) + 1;
 
         int size = 10;
         Buffer buffer = new Buffer(size);
@@ -25,10 +27,18 @@ public class Main {
         for(int i = 0; i < consumerNumber; i++) consumers.add(new Consumer(i + 1, halfSize, proxy));
 
         ExecutorService executor = Executors.newCachedThreadPool();
-
         consumers.forEach(executor::execute);
         producers.forEach(executor::execute);
 
+        ExecutorService scheduler = Executors.newCachedThreadPool();
+
+        scheduler.execute(() -> {
+            while (true){
+                proxy.getScheduler().dispatch();
+            }
+        });
+
         executor.shutdown();
+        scheduler.shutdown();
     }
 }

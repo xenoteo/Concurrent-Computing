@@ -27,4 +27,8 @@ public class Proxy {
         scheduler.enqueue(request);
         return request.getFuture();
     }
+
+    public Scheduler getScheduler() {
+        return scheduler;
+    }
 }

@@ -26,6 +26,7 @@ public class Buffer {
 
     public void produce(ProducerRequest request){
         buffer.addAll(request.getElements());
+        request.getFuture().finish();
     }
 
     public void consume(ConsumerRequest request){
@@ -33,7 +34,9 @@ public class Buffer {
         for (int i = 0; i < request.getN(); i++){
             result.add(buffer.poll());
         }
-        ((ConsumerFuture)request.getFuture()).setResult(result);
+        ConsumerFuture future = (ConsumerFuture)request.getFuture();
+        future.setResult(result);
+        future.finish();
     }
 
 }

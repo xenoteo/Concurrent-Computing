@@ -10,14 +10,12 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ActivationQueue {
-    private final LinkedList<MethodRequest> queue;
     private final LinkedList<MethodRequest> producerQueue;
     private final LinkedList<MethodRequest> consumerQueue;
     private final Lock lock;
     private final Condition schedulerCondition;
 
     public ActivationQueue(){
-        queue = new LinkedList<>();
         producerQueue = new LinkedList<>();
         consumerQueue = new LinkedList<>();
         lock = new ReentrantLock();
@@ -27,10 +25,9 @@ public class ActivationQueue {
     public void enqueue(MethodRequest request){
         lock.lock();
         try{
-            queue.add(request);
             if (request instanceof ConsumerRequest)
                 consumerQueue.add(request);
-            else if (request instanceof ProducerRequest)
+            else if (request instanceof  ProducerRequest)
                 producerQueue.add(request);
             schedulerCondition.signal();
         } finally {
@@ -38,8 +35,27 @@ public class ActivationQueue {
         }
     }
 
-    public MethodRequest dequeue(){
-        // TODO
+    private MethodRequest tryDequeue(){
+        if (!producerQueue.isEmpty() && producerQueue.peek().guard())
+            return producerQueue.poll();
+        if (!consumerQueue.isEmpty() && consumerQueue.peek().guard())
+            return consumerQueue.poll();
         return null;
+    }
+
+    public MethodRequest dequeue(){
+        lock.lock();
+        MethodRequest request = null;
+        try{
+            while (request == null){
+                request = tryDequeue();
+                schedulerCondition.await();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+        return request;
     }
 }
