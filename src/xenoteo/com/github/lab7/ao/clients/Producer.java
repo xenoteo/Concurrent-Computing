@@ -33,7 +33,7 @@ public class Producer extends SinusCalculator implements Runnable{
         int size = (int) (Math.random() * 100) % this.maxSize + 1;
         List<Integer> data = new LinkedList<>();
         for (int i = 0; i < size; i++){
-            data.add((int) (Math.random() * 100));
+            data.add((int) (Math.random() * 100) + 1);
         }
         return data;
     }

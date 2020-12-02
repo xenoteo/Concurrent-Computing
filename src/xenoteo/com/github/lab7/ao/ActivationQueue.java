@@ -45,17 +45,18 @@ public class ActivationQueue {
 
     public MethodRequest dequeue(){
         lock.lock();
-        MethodRequest request = null;
         try{
+            MethodRequest request = tryDequeue();
             while (request == null){
-                request = tryDequeue();
                 schedulerCondition.await();
+                request = tryDequeue();
             }
+            return request;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             lock.unlock();
         }
-        return request;
+        return null;
     }
 }
