@@ -10,6 +10,7 @@ public class Producer extends SinusCalculator implements Runnable{
     private final int maxSize;
     private final long finishTime;
     private int count;
+    private int sinCount;
 
     public Producer(int id, Factory factory, int maxSize, int sinCount, long finishTime) {
         super(sinCount);
@@ -32,10 +33,15 @@ public class Producer extends SinusCalculator implements Runnable{
             System.out.printf("Producer %d produced elements %s and calculated %d random sinuses\n",
                     id, Arrays.toString(data.toArray()), sinCount);
             count++;
+            this.sinCount += sinCount;
         }
     }
 
     public int getCount() {
         return count;
+    }
+
+    public int getSinCount() {
+        return sinCount;
     }
 }

@@ -44,7 +44,9 @@ public class Main {
         }
 
         int operationsNumber = countOperations(producers, consumers);
-        System.out.printf("Executed %d client's operations in %d s\n", operationsNumber, simulationTime);
+        int sinNumber = countSinuses(producers, consumers);
+        System.out.printf("In %d s executed %d client's operations and counted %d sinuses\n",
+                simulationTime, operationsNumber, sinNumber);
 
     }
 
@@ -54,6 +56,15 @@ public class Main {
             count += producer.getCount();
         for (Consumer consumer : consumers)
             count += consumer.getCount();
+        return count;
+    }
+
+    private static int countSinuses(List<Producer> producers, List<Consumer> consumers){
+        int count = 0;
+        for (Producer producer : producers)
+            count += producer.getSinCount();
+        for (Consumer consumer : consumers)
+            count += consumer.getSinCount();
         return count;
     }
 }
