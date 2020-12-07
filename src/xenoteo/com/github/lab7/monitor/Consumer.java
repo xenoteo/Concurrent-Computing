@@ -18,7 +18,7 @@ public class Consumer extends SinusCalculator implements Runnable{
         this.id = id;
         this.finishTime = finishTime;
         count = 0;
-        sinCount = 0;
+        this.sinCount = 0;
     }
 
     @Override
@@ -27,6 +27,7 @@ public class Consumer extends SinusCalculator implements Runnable{
             int size = (int) (Math.random() * 100) % this.maxSize + 1;
             List<Integer> data = factory.consume(size, id);
             int sinCount = countSinuses();
+            if (data == null) continue;
             System.out.printf("Consumer %d consumed elements %s and calculated %d random sinuses\n",
                     id, Arrays.toString(data.toArray()), sinCount);
             count++;

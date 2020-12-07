@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab7.ao;
+package xenoteo.com.github.lab7.ao.scheduler;
 
 import xenoteo.com.github.lab7.ao.request.MethodRequest;
 

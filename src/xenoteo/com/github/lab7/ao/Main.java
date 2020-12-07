@@ -2,6 +2,7 @@ package xenoteo.com.github.lab7.ao;
 
 import xenoteo.com.github.lab7.ao.clients.Consumer;
 import xenoteo.com.github.lab7.ao.clients.Producer;
+import xenoteo.com.github.lab7.ao.scheduler.SchedulerRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) {
-        final int THREADS_BOUNDER = 50;
+        final int THREADS_BOUNDER = 100;
 
         int consumerNumber = (int) (Math.random() * THREADS_BOUNDER) + 1;
         int producerNumber = (int) (Math.random() * THREADS_BOUNDER) + 1;
 
-        int size = 10;
+        int size = 50;
         Buffer buffer = new Buffer(size);
 
         ArrayList<Producer> producers = new ArrayList<>();
@@ -34,31 +35,27 @@ public class Main {
         consumers.forEach(executor::execute);
         producers.forEach(executor::execute);
 
-        ExecutorService scheduler = Executors.newCachedThreadPool();
-        scheduler.execute(() -> {
-            while (true){
-                proxy.getScheduler().dispatch();
-            }
-        });
-
+        SchedulerRunner schedulerRunner = new SchedulerRunner(proxy.getScheduler(), finishTime);
+        executor.execute(schedulerRunner);
 
         try {
             executor.shutdown();
-            scheduler.shutdown();
             executor.awaitTermination(simulationTime, TimeUnit.SECONDS);
         }
         catch (InterruptedException e) {
-            System.err.println("tasks interrupted");
+            System.err.println("Tasks interrupted");
         }
         finally {
             executor.shutdownNow();
-            scheduler.shutdownNow();
+            killAll(Thread.currentThread());
         }
+
 
         int operationsNumber = countOperations(producers, consumers);
         int sinNumber = countSinuses(producers, consumers);
-        System.out.printf("In %d s executed %d client's operations and counted %d sinuses\n",
-                simulationTime, operationsNumber, sinNumber);
+        System.out.printf((char)27 + "[32m" + "\n%d producers and %d consumers in %d s executed %d client's operations and counted %d sinuses\n",
+                producerNumber, consumerNumber, simulationTime, operationsNumber, sinNumber);
+        System.out.println((char)27 + "[0m");
     }
 
     private static int countOperations(List<Producer> producers, List<Consumer> consumers){
@@ -77,5 +74,14 @@ public class Main {
         for (Consumer consumer : consumers)
             count += consumer.getSinCount();
         return count;
+    }
+
+    private static void killAll(Thread mainThread){
+        for (Thread thread : Thread.getAllStackTraces().keySet()) {
+            if (thread != mainThread){
+                thread.interrupt();
+                thread.stop();
+            }
+        }
     }
 }

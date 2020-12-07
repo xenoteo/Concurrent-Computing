@@ -8,18 +8,18 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
-        final int THREADS_BOUNDER = 10;
+        final int THREADS_BOUNDER = 50;
 
         int consumerNumber = (int) (Math.random() * THREADS_BOUNDER) + 1;
         int producerNumber = (int) (Math.random() * THREADS_BOUNDER) + 1;
 
-        int size = 10;
+        int size = 50;
         Factory factory = new Factory(size);
 
         ArrayList<Producer> producers = new ArrayList<>();
         ArrayList<Consumer> consumers = new ArrayList<>();
         int halfSize = size / 2;
-        int sinCount = 10;
+        int sinCount = 50000;
         int simulationTime = 5;
         long finishTime = System.currentTimeMillis() + simulationTime * 1000;
 
@@ -37,7 +37,7 @@ public class Main {
             executor.awaitTermination(simulationTime, TimeUnit.SECONDS);
         }
         catch (InterruptedException e) {
-            System.err.println("tasks interrupted");
+            System.err.println("Tasks interrupted");
         }
         finally {
             executor.shutdownNow();
@@ -45,9 +45,9 @@ public class Main {
 
         int operationsNumber = countOperations(producers, consumers);
         int sinNumber = countSinuses(producers, consumers);
-        System.out.printf("In %d s executed %d client's operations and counted %d sinuses\n",
-                simulationTime, operationsNumber, sinNumber);
-
+        System.out.printf((char)27 + "[32m" + "\n%d producers and %d consumers in %d s executed %d client's operations and counted %d sinuses\n",
+                producerNumber, consumerNumber, simulationTime, operationsNumber, sinNumber);
+        System.out.println((char)27 + "[0m");
     }
 
     private static int countOperations(List<Producer> producers, List<Consumer> consumers){

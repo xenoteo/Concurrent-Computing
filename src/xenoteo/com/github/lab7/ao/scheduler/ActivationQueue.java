@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab7.ao;
+package xenoteo.com.github.lab7.ao.scheduler;
 
 import xenoteo.com.github.lab7.ao.request.ConsumerRequest;
 import xenoteo.com.github.lab7.ao.request.MethodRequest;
@@ -53,7 +53,7 @@ public class ActivationQueue {
             }
             return request;
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("Task interrupted");
         } finally {
             lock.unlock();
         }

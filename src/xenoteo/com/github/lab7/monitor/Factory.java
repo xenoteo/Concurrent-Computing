@@ -55,7 +55,7 @@ public class Factory {
             firstConsumer.signal();
             restProducers.signal();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("Task interrupted");
         } finally {
             lock.unlock();
         }
@@ -89,7 +89,7 @@ public class Factory {
             restConsumers.signal();
             return data;
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("Task interrupted");
             return null;
         }
         finally {

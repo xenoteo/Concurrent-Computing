@@ -4,6 +4,7 @@ import xenoteo.com.github.lab7.ao.future.Future;
 import xenoteo.com.github.lab7.ao.request.ConsumerRequest;
 import xenoteo.com.github.lab7.ao.request.MethodRequest;
 import xenoteo.com.github.lab7.ao.request.ProducerRequest;
+import xenoteo.com.github.lab7.ao.scheduler.Scheduler;
 
 import java.util.List;
 
