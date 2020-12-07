@@ -10,23 +10,38 @@ public class Consumer extends SinusCalculator implements Runnable{
     private final int id;
     private final int maxSize;
     private final Proxy proxy;
+    private final long finishTime;
+    private int count;
+    private int sinCount;
 
-    public Consumer(int id, int maxSize, Proxy proxy) {
+    public Consumer(int id, int maxSize, Proxy proxy, long finishTime) {
         this.id = id;
         this.maxSize = maxSize;
         this.proxy = proxy;
+        this.finishTime = finishTime;
+        count = 0;
+        sinCount = 0;
     }
 
     @Override
     public void run() {
-        while(true){
+        while(System.currentTimeMillis() < finishTime){
             int n = (int) (Math.random() * 100) % this.maxSize + 1;
             ConsumerFuture future = (ConsumerFuture) proxy.consume(n);
-            int count = countSinuses(future);
+            int sinCount = countSinuses(future);
             List<Integer> consumedElements = future.getResult();
             System.out.printf("Consumer %d consumed elements %s; while waiting calculated %d random sinuses\n",
-                    id, Arrays.toString(consumedElements.toArray()), count);
+                    id, Arrays.toString(consumedElements.toArray()), sinCount);
+            this.sinCount += sinCount;
+            count++;
         }
+    }
 
+    public int getCount() {
+        return count;
+    }
+
+    public int getSinCount() {
+        return sinCount;
     }
 }

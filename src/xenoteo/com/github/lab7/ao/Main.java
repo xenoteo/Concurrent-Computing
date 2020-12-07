@@ -4,8 +4,10 @@ import xenoteo.com.github.lab7.ao.clients.Consumer;
 import xenoteo.com.github.lab7.ao.clients.Producer;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -22,9 +24,11 @@ public class Main {
         ArrayList<Consumer> consumers = new ArrayList<>();
         int halfSize = size / 2;
         Proxy proxy = new Proxy(buffer);
+        int simulationTime = 5;
+        long finishTime = System.currentTimeMillis() + simulationTime * 1000;
 
-        for(int i = 0; i < producerNumber; i++) producers.add(new Producer(i + 1, halfSize, proxy));
-        for(int i = 0; i < consumerNumber; i++) consumers.add(new Consumer(i + 1, halfSize, proxy));
+        for(int i = 0; i < producerNumber; i++) producers.add(new Producer(i + 1, halfSize, proxy, finishTime));
+        for(int i = 0; i < consumerNumber; i++) consumers.add(new Consumer(i + 1, halfSize, proxy, finishTime));
 
         ExecutorService executor = Executors.newCachedThreadPool();
         consumers.forEach(executor::execute);
@@ -37,7 +41,41 @@ public class Main {
             }
         });
 
-        executor.shutdown();
-        scheduler.shutdown();
+
+        try {
+            executor.shutdown();
+            scheduler.shutdown();
+            executor.awaitTermination(simulationTime, TimeUnit.SECONDS);
+        }
+        catch (InterruptedException e) {
+            System.err.println("tasks interrupted");
+        }
+        finally {
+            executor.shutdownNow();
+            scheduler.shutdownNow();
+        }
+
+        int operationsNumber = countOperations(producers, consumers);
+        int sinNumber = countSinuses(producers, consumers);
+        System.out.printf("In %d s executed %d client's operations and counted %d sinuses\n",
+                simulationTime, operationsNumber, sinNumber);
+    }
+
+    private static int countOperations(List<Producer> producers, List<Consumer> consumers){
+        int count = 0;
+        for (Producer producer : producers)
+            count += producer.getCount();
+        for (Consumer consumer : consumers)
+            count += consumer.getCount();
+        return count;
+    }
+
+    private static int countSinuses(List<Producer> producers, List<Consumer> consumers){
+        int count = 0;
+        for (Producer producer : producers)
+            count += producer.getSinCount();
+        for (Consumer consumer : consumers)
+            count += consumer.getSinCount();
+        return count;
     }
 }
