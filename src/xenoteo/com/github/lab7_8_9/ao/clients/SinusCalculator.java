@@ -1,6 +1,6 @@
-package xenoteo.com.github.lab7.ao.clients;
+package xenoteo.com.github.lab7_8_9.ao.clients;
 
-import xenoteo.com.github.lab7.ao.future.Future;
+import xenoteo.com.github.lab7_8_9.ao.future.Future;
 
 public abstract class SinusCalculator {
     private double calculateRandomSinus(){

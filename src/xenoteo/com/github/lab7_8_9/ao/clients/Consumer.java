@@ -1,7 +1,7 @@
-package xenoteo.com.github.lab7.ao.clients;
+package xenoteo.com.github.lab7_8_9.ao.clients;
 
-import xenoteo.com.github.lab7.ao.Proxy;
-import xenoteo.com.github.lab7.ao.future.ConsumerFuture;
+import xenoteo.com.github.lab7_8_9.ao.Proxy;
+import xenoteo.com.github.lab7_8_9.ao.future.ConsumerFuture;
 
 import java.util.Arrays;
 import java.util.List;

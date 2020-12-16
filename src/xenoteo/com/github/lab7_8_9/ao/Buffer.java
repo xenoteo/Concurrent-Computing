@@ -1,8 +1,8 @@
-package xenoteo.com.github.lab7.ao;
+package xenoteo.com.github.lab7_8_9.ao;
 
-import xenoteo.com.github.lab7.ao.future.ConsumerFuture;
-import xenoteo.com.github.lab7.ao.request.ConsumerRequest;
-import xenoteo.com.github.lab7.ao.request.ProducerRequest;
+import xenoteo.com.github.lab7_8_9.ao.future.ConsumerFuture;
+import xenoteo.com.github.lab7_8_9.ao.request.ConsumerRequest;
+import xenoteo.com.github.lab7_8_9.ao.request.ProducerRequest;
 
 import java.util.LinkedList;
 import java.util.List;

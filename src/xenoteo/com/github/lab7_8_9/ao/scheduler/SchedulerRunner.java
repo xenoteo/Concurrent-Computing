@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab7.ao.scheduler;
+package xenoteo.com.github.lab7_8_9.ao.scheduler;
 
 public class SchedulerRunner implements Runnable{
     private final Scheduler scheduler;

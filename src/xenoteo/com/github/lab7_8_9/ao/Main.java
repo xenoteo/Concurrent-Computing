@@ -1,8 +1,8 @@
-package xenoteo.com.github.lab7.ao;
+package xenoteo.com.github.lab7_8_9.ao;
 
-import xenoteo.com.github.lab7.ao.clients.Consumer;
-import xenoteo.com.github.lab7.ao.clients.Producer;
-import xenoteo.com.github.lab7.ao.scheduler.SchedulerRunner;
+import xenoteo.com.github.lab7_8_9.ao.clients.Consumer;
+import xenoteo.com.github.lab7_8_9.ao.clients.Producer;
+import xenoteo.com.github.lab7_8_9.ao.scheduler.SchedulerRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) {
-        final int THREADS_BOUNDER = 100;
+        final int THREADS_BOUNDER = 50;
 
         int consumerNumber = (int) (Math.random() * THREADS_BOUNDER) + 1;
         int producerNumber = (int) (Math.random() * THREADS_BOUNDER) + 1;
 
-        int size = 50;
+        int size = 500;
         Buffer buffer = new Buffer(size);
 
         ArrayList<Producer> producers = new ArrayList<>();

@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab7.monitor;
+package xenoteo.com.github.lab7_8_9.monitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Main {
         ArrayList<Producer> producers = new ArrayList<>();
         ArrayList<Consumer> consumers = new ArrayList<>();
         int halfSize = size / 2;
-        int sinCount = 50000;
+        int sinCount = 100;
         int simulationTime = 5;
         long finishTime = System.currentTimeMillis() + simulationTime * 1000;
 

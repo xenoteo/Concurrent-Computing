@@ -1,8 +1,8 @@
-package xenoteo.com.github.lab7.ao.scheduler;
+package xenoteo.com.github.lab7_8_9.ao.scheduler;
 
-import xenoteo.com.github.lab7.ao.request.ConsumerRequest;
-import xenoteo.com.github.lab7.ao.request.MethodRequest;
-import xenoteo.com.github.lab7.ao.request.ProducerRequest;
+import xenoteo.com.github.lab7_8_9.ao.request.ConsumerRequest;
+import xenoteo.com.github.lab7_8_9.ao.request.MethodRequest;
+import xenoteo.com.github.lab7_8_9.ao.request.ProducerRequest;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;

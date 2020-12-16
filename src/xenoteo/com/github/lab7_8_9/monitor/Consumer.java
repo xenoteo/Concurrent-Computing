@@ -1,10 +1,9 @@
-package xenoteo.com.github.lab7.monitor;
+package xenoteo.com.github.lab7_8_9.monitor;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-public class Producer extends SinusCalculator implements Runnable{
+public class Consumer extends SinusCalculator implements Runnable{
     private final Factory factory;
     private final int id;
     private final int maxSize;
@@ -12,25 +11,24 @@ public class Producer extends SinusCalculator implements Runnable{
     private int count;
     private int sinCount;
 
-    public Producer(int id, Factory factory, int maxSize, int sinCount, long finishTime) {
+    public Consumer(int id, Factory factory, int maxSize, int sinCount, long finishTime) {
         super(sinCount);
         this.factory = factory;
         this.maxSize = maxSize;
         this.id = id;
         this.finishTime = finishTime;
+        count = 0;
+        this.sinCount = 0;
     }
 
     @Override
     public void run() {
         while (System.currentTimeMillis() < finishTime) {
             int size = (int) (Math.random() * 100) % this.maxSize + 1;
-            List<Integer> data = new LinkedList<>();
-            for (int i = 0; i < size; i++){
-                data.add((int) (Math.random() * 100));
-            }
-            factory.produce(data, id);
+            List<Integer> data = factory.consume(size, id);
             int sinCount = countSinuses();
-            System.out.printf("Producer %d produced elements %s and calculated %d random sinuses\n",
+            if (data == null) continue;
+            System.out.printf("Consumer %d consumed elements %s and calculated %d random sinuses\n",
                     id, Arrays.toString(data.toArray()), sinCount);
             count++;
             this.sinCount += sinCount;

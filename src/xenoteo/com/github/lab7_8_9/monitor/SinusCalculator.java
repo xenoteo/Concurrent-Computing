@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab7.monitor;
+package xenoteo.com.github.lab7_8_9.monitor;
 
 
 public abstract class SinusCalculator {

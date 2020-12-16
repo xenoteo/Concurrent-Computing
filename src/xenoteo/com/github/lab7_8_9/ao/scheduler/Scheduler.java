@@ -1,6 +1,6 @@
-package xenoteo.com.github.lab7.ao.scheduler;
+package xenoteo.com.github.lab7_8_9.ao.scheduler;
 
-import xenoteo.com.github.lab7.ao.request.MethodRequest;
+import xenoteo.com.github.lab7_8_9.ao.request.MethodRequest;
 
 public class Scheduler {
     private final ActivationQueue queue;

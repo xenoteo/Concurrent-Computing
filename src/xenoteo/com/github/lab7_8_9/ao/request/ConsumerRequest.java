@@ -1,8 +1,8 @@
-package xenoteo.com.github.lab7.ao.request;
+package xenoteo.com.github.lab7_8_9.ao.request;
 
-import xenoteo.com.github.lab7.ao.Buffer;
-import xenoteo.com.github.lab7.ao.future.ConsumerFuture;
-import xenoteo.com.github.lab7.ao.future.Future;
+import xenoteo.com.github.lab7_8_9.ao.Buffer;
+import xenoteo.com.github.lab7_8_9.ao.future.ConsumerFuture;
+import xenoteo.com.github.lab7_8_9.ao.future.Future;
 
 public class ConsumerRequest implements MethodRequest{
     private final Buffer buffer;
