@@ -4,12 +4,26 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Producer counting a provided number of sinuses after each production and stopping activity at the given moment.
+ */
 public class Producer extends SinusCalculator implements Runnable{
     private final Factory factory;
     private final int id;
     private final int maxSize;
+    /**
+     * Time for producer to finish activity
+     */
     private final long finishTime;
+
+    /**
+     * Variable for counting how many productions were performed
+     */
     private int count;
+
+    /**
+     * Number of sinuses to be counted after each cproduction
+     */
     private int sinCount;
 
     public Producer(int id, Factory factory, int maxSize, int sinCount, long finishTime) {

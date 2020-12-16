@@ -7,6 +7,13 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Producer counting sinuses while waiting for the production to be finished.
+ *
+ * @see xenoteo.com.github.lab7_8_9.ao.future.Future
+ * @see Proxy
+ * @see SinusCalculator
+ */
 public class Producer extends SinusCalculator implements Runnable{
     private final int id;
     private final int maxSize;

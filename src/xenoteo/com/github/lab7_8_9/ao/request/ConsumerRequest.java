@@ -4,6 +4,9 @@ import xenoteo.com.github.lab7_8_9.ao.Buffer;
 import xenoteo.com.github.lab7_8_9.ao.future.ConsumerFuture;
 import xenoteo.com.github.lab7_8_9.ao.future.Future;
 
+/**
+ * Method request for consumers.
+ */
 public class ConsumerRequest implements MethodRequest{
     private final Buffer buffer;
     private final ConsumerFuture future;

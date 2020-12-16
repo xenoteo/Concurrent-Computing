@@ -2,6 +2,9 @@ package xenoteo.com.github.lab7_8_9.ao.future;
 
 import java.util.List;
 
+/**
+ * Future class for consumers.
+ */
 public class ConsumerFuture extends Future{
     private List<Integer> result;
 

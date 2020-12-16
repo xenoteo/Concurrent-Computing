@@ -7,6 +7,17 @@ import xenoteo.com.github.lab7_8_9.ao.request.ProducerRequest;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A Servant defines the behavior and state that is being modeled as an Active Object.
+ * Servants implement the methods defined in the Proxy and the corresponding Method Requests.
+ * A Servant method is invoked when its corresponding Method Request is executed by a Scheduler;
+ * thus, Servants execute in the Scheduler’s thread of control.
+ *
+ * @see xenoteo.com.github.lab7_8_9.ao.request.MethodRequest
+ * @see Proxy
+ * @see xenoteo.com.github.lab7_8_9.ao.scheduler.Scheduler
+ * @see xenoteo.com.github.lab7_8_9.ao.scheduler.ActivationQueue
+ */
 public class Buffer {
     private final LinkedList<Integer> buffer;
     private final int maxSize;

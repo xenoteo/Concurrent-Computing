@@ -6,6 +6,9 @@ import xenoteo.com.github.lab7_8_9.ao.future.ProducerFuture;
 
 import java.util.List;
 
+/**
+ * Method request for producers.
+ */
 public class ProducerRequest implements MethodRequest{
     private final Buffer buffer;
     private final ProducerFuture future;

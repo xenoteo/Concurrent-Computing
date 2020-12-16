@@ -6,6 +6,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Demonstration of producer-consumer problem, where each thread additionally counts sinuses after each operation.
+ * Program counts how many sinuses were counted and how many operations were done in a provided time.
+ */
 public class Main {
     public static void main(String[] args) {
         final int THREADS_BOUNDER = 50;

@@ -6,6 +6,13 @@ import xenoteo.com.github.lab7_8_9.ao.future.ConsumerFuture;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Consumer counting sinuses while waiting for the consumption to be finished.
+ *
+ * @see xenoteo.com.github.lab7_8_9.ao.future.Future
+ * @see Proxy
+ * @see SinusCalculator
+ */
 public class Consumer extends SinusCalculator implements Runnable{
     private final int id;
     private final int maxSize;

@@ -8,6 +8,14 @@ import xenoteo.com.github.lab7_8_9.ao.scheduler.Scheduler;
 
 import java.util.List;
 
+/**
+ * A Proxy provides an interface that allows clients to invoke publically accessible methods on an Active Object.
+ * When a client invokes a method defined by the Proxy, this triggers the construction and queueing of
+ * a Method Request object on to the Scheduler’s Activation Queue, all of which occurs in the client’s thread of control.
+ *
+ * @see MethodRequest
+ * @see Scheduler
+ */
 public class Proxy {
     private final Scheduler scheduler;
     private final Buffer buffer;

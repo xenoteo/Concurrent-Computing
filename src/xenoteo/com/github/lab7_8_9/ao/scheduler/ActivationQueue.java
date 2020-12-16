@@ -9,6 +9,15 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * An Activation Queue maintains a bounded buffer of pending Method Requests created by the Proxy.
+ * This queue keeps track of which Method Requests to execute. It also decouples the client thread from
+ * the servant thread so the two threads can run concurrently.
+ *
+ * @see MethodRequest
+ * @see Scheduler
+ * @see xenoteo.com.github.lab7_8_9.ao.Proxy
+ */
 public class ActivationQueue {
     private final LinkedList<MethodRequest> producerQueue;
     private final LinkedList<MethodRequest> consumerQueue;

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Demonstrating of producer-consumer problem.
+ * Demonstration of producer-consumer problem.
  */
 public class Main {
     public static void main(String[] args) {

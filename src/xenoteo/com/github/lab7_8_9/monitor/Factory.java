@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Factory, where producers produce and consumers consume.
+ */
 public class Factory {
     private final ReentrantLock lock;
 

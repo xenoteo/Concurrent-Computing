@@ -10,6 +10,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Demonstration of producer-consumer problem using Active Object pattern.
+ * Threads count sinuses while waiting for the operation to be finished.
+ * Program counts how many sinuses were counted and how many operations were done in a provided time.
+ */
 public class Main {
 
     public static void main(String[] args) {
