@@ -1,5 +1,8 @@
 package xenoteo.com.github.lab6;
 
+/**
+ * Simple consumer implementation.
+ */
 public class Consumer implements Runnable{
     private int id;
     private Factory factory;

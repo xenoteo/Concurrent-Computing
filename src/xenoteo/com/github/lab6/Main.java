@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Demonstration of producer-consumer problem using Lock and Condition interfaces.
+ * Buffer moved to separate class, ticket system for producers and consumers.
+ */
 public class Main {
 
     public static void main(String[] args) {

@@ -3,6 +3,9 @@ package xenoteo.com.github.lab6;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Buffer where producers and consumers operate using concrete position they have got access to.
+ */
 public class Buffer {
     private final int size;
     private final Map<Integer, Integer> buffer;

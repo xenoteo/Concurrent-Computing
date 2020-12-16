@@ -1,5 +1,8 @@
 package xenoteo.com.github.lab6;
 
+/**
+ * Simple procuder implementation.
+ */
 public class Producer implements Runnable{
     private int id;
     private Factory factory;

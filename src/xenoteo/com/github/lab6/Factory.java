@@ -6,12 +6,22 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Factory providing "tickets" for the concrete position in the buffer for producers and consumers.
+ */
 public class Factory {
     private final Lock lock;
     private final Condition producersCond;
     private final Condition consumersCond;
 
+    /**
+     * List of empty positions in the buffer
+     */
+
     private final List<Integer> empty;
+    /**
+     * List of occupied positions in the buffer
+     */
     private final List<Integer> occupied;
 
     private final int size;
@@ -33,6 +43,12 @@ public class Factory {
         for(int i = 0; i < size; i++) empty.add(i);
     }
 
+    /**
+     * Waits for an empty position to occur (if necessary) and then
+     * allows producer to produce a value from this position.
+     * @param val value to be produced by a producer
+     * @param producerId id of a producer
+     */
     public void produce(int val, int producerId){
         lock.lock();
         System.out.printf("Producer %d entered\n", producerId);
@@ -51,6 +67,12 @@ public class Factory {
         }
     }
 
+    /**
+     * Waits for an occupied position to occur (if necessary) and then
+     * allows consumer to consume a value from this position.
+     * @param consumerId id of a consumer
+     * @return consumed value
+     */
     public int consume(int consumerId){
         lock.lock();
         System.out.printf("Consumer %d entered. %d threads in buffer\n", consumerId, countNumberOfThreadsInBuffer());
