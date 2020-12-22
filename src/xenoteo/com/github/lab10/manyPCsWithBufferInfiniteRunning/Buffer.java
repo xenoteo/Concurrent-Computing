@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab10.bufferInfiniteManyPC;
+package xenoteo.com.github.lab10.manyPCsWithBufferInfiniteRunning;
 
 import org.jcsp.lang.*;
 

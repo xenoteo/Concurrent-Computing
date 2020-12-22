@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab10.justPC;
+package xenoteo.com.github.lab10.justPCwithoutBuffer;
 
 import org.jcsp.lang.*;
 
