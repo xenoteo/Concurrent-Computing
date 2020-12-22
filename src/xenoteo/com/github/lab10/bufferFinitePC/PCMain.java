@@ -1,4 +1,4 @@
-package xenoteo.com.github.lab10.bufferPC;
+package xenoteo.com.github.lab10.bufferFinitePC;
 
 import org.jcsp.lang.*;
 
